@@ -1,0 +1,120 @@
+:root {
+    --bg0: #101010;
+    --bg1: #303030;
+    --txt0: #dddddd;
+
+    --player1: #ea4335;
+    --player2: #4285f4;
+
+    --win-glow: 0 0 15px 5px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--txt0);
+}
+
+body {
+    height: 100vh;
+    background-color: var(--bg0);
+
+    display: flex;
+    padding: 10vw;
+
+    overflow-y: scroll;
+}
+
+/* grid */
+#grid {
+    width: 70%;
+    max-width: 400px;
+    aspect-ratio: 1;
+
+    display: grid;
+    flex-wrap: wrap;
+    align-items: center;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 5px;
+    margin: auto;
+}
+
+#grid .cell {
+    width: 100%;
+    aspect-ratio: 1;
+
+    background-color: var(--bg1);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s, border-radius 0.3s;
+    border: 3px solid transparent;
+    border-radius: 8px;
+}
+
+#grid .cell:hover {
+    background-color: #505050;
+}
+
+/* Player colors */
+#grid .cell.p2 {
+    background-color: var(--player1);
+    border-radius: 50%;
+    /* keep border-radius: 8px (rounded square) */
+}
+
+#grid .cell.p1 {
+    background-color: var(--player2);    
+    /* circle */
+}
+
+/* Winning cells highlight */
+#grid .cell.win {
+    border-color: yellow;
+    box-shadow: var(--win-glow) yellow;
+    cursor: default;
+}
+
+
+
+/* POPUP */
+#mssg {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(10px);
+    background-color: #303030aa;
+
+
+    display: none;
+}
+
+#mssg p {
+    font-size: 20px;
+}
+
+#mssg button {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 10px;
+
+    color: var(--txt0);
+    background-color: var(--bg0);
+    cursor: pointer;
+}
